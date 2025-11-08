@@ -9,5 +9,12 @@ export const config = {
         'goog:chromeOptions': {
             args: ['--headless'] //optional '--disable-gpu', '--window-size=1920,1080'
         }
+    }],
+    services: [
+    // інші сервіси, якщо є
+    ['chromedriver', {
+        // вимикаємо xvfb (WebdriverIO автоматично його не запускатиме)
+        useXvfb: false
     }]
+    ]
 };
