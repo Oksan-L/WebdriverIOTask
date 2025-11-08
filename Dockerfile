@@ -1,5 +1,5 @@
-# Використовуємо офіційний Node образ
-FROM node:20-buster
+# Використовуємо свіжу базу (bullseye замість buster)
+FROM node:20-bullseye
 
 # Встановлюємо залежності для Chrome
 RUN apt-get update && apt-get install -y \
