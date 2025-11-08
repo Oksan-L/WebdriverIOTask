@@ -34,8 +34,7 @@ RUN npm install -g allure-commandline --force
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --save-dev wdio-chromedriver-service --legacy-peer-deps
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 COPY . .
 
 # Chrome args, які потрібно явно передати (щоб не вилітав у Docker)
