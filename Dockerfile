@@ -1,4 +1,3 @@
-# Використовуємо свіжу базу (bullseye замість buster)
 FROM node:20-bullseye
 
 # Встановлюємо залежності для Chrome
@@ -20,7 +19,9 @@ RUN apt-get update && apt-get install -y \
     libxcomposite1 \
     libxdamage1 \
     libxrandr2 \
+    libxshmfence1 \
     xdg-utils \
+    --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Встановлюємо Google Chrome (stable)
@@ -28,17 +29,16 @@ RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd6
     && apt install -y ./google-chrome-stable_current_amd64.deb \
     && rm google-chrome-stable_current_amd64.deb
 
-# Встановлюємо Allure CLI глобально
+# Встановлюємо Allure CLI
 RUN npm install -g allure-commandline --force
 
-# Робоча директорія
 WORKDIR /app
-
-# Копіюємо файли проекту
 COPY package*.json ./
 RUN npm ci
-
 COPY . .
 
-# Стандартна команда для запуску тестів у контейнері
-CMD ["npm", "run", "test:chrome"]
+# Chrome args, які потрібно явно передати (щоб не вилітав у Docker)
+ENV CHROME_ARGS="--headless=new --disable-gpu --no-sandbox --disable-dev-shm-usage --disable-extensions --disable-infobars --disable-notifications --remote-debugging-port=9222"
+
+# Виконуємо тести
+CMD ["sh", "-c", "npx wdio run ./configs/wdio.chrome.conf.js"]
