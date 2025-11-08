@@ -11,6 +11,6 @@ export const config = {
         }
     }],
     services: [
-        ['chromedriver', { useXvfb: false }]
+        ['chromedriver']
         ]
 };
