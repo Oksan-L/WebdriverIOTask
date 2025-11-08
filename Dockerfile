@@ -34,6 +34,7 @@ RUN npm install -g allure-commandline --force
 
 WORKDIR /app
 COPY package*.json ./
+RUN npm install --save-dev @wdio/chromedriver-service
 RUN npm ci
 COPY . .
 
