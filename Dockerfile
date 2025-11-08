@@ -15,7 +15,7 @@ RUN npm install -g allure-commandline --force
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --legacy-peer-deps
+RUN npm install --save-dev @wdio/devtools-service --legacy-peer-deps
 COPY . .
 
 ENV CHROME_ARGS="--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-extensions"
