@@ -11,10 +11,6 @@ export const config = {
         }
     }],
     services: [
-    // інші сервіси, якщо є
-    ['chromedriver', {
-        // вимикаємо xvfb (WebdriverIO автоматично його не запускатиме)
-        useXvfb: false
-    }]
-    ]
+        ['chromedriver', { useXvfb: false }]
+        ]
 };
