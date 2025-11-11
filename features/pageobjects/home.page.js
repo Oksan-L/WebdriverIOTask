@@ -2,43 +2,34 @@ import Page from './base.page.js';
 import { $ } from '@wdio/globals';
 
 class HomePage extends Page {
-  /**
-   * Selectors for key homepage elements
-   */
-  get headerLogo() {
-    return $('header a[href="/"]');
+  get callYourAgentButton() {
+    return $('a[href="#interactive-tool-demo"]');
   }
 
-  get mainNav() {
-    return $('nav[aria-label="Main menu"]');
+  get interactiveToolSection() {
+    return $('#interactive-tool-demo');
   }
 
-  get tryForFreeButton() {
-    return $('a[href*="sign-up"]');
-  }
-
-  /**
-   * Open the Telnyx homepage
-   */
   async open() {
-    return super.open('/'); // opens https://telnyx.com/
+    return super.open('/');
   }
 
-  /**
-   * Check if main menu is displayed
-   */
-  async isMainMenuVisible() {
-    return await this.mainNav.isDisplayed();
+  async clickCallYourAgent() {
+    await this.callYourAgentButton.scrollIntoView();
+    await this.callYourAgentButton.waitForClickable();
+    await this.callYourAgentButton.click();
   }
 
-  /**
-   * Click "Try for Free" button
-   */
-  async clickTryForFree() {
-    if (await this.tryForFreeButton.isDisplayed()) {
-      await this.tryForFreeButton.click();
-    }
+  async isInteractiveToolVisible() {
+    await this.interactiveToolSection.waitForDisplayed({ timeout: 5000 });
+    return this.interactiveToolSection.isDisplayed();
   }
+
+  async isPageLoaded() {
+    const title = await browser.getTitle();
+    return title.includes('Telnyx');
+  }
+
 }
 
 export default new HomePage();
