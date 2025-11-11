@@ -1,2 +1,7 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","368","As a user, I can log into the secure area","The Internet Guinea Pig Website","Sat Nov 08 19:59:05 UTC 2025","passed","Sat Nov 08 19:59:06 UTC 2025","","","",""
+"","614","As a user, I can log into the secure area","The Internet Guinea Pig Website","Mon Nov 10 01:29:46 UTC 2025","passed","Mon Nov 10 01:29:47 UTC 2025","","","",""
+"","5","As a user, I can log into the secure area","Telnyx Home Page","Mon Nov 10 00:13:02 UTC 2025","broken","Mon Nov 10 00:13:02 UTC 2025","","","",""
+"","9","As a visitor, I can open the Telnyx home page and see the main menu","Telnyx Home Page","Mon Nov 10 01:13:56 UTC 2025","skipped","Mon Nov 10 01:13:56 UTC 2025","","","",""
+"","1170","Telnyx Home Page opened successfully and title is correct","Home Page","Tue Nov 11 00:13:12 UTC 2025","passed","Tue Nov 11 00:13:13 UTC 2025","","","",""
+"","4","Verify title contains ""Telnyx"" and main menu is present","Telnyx Home Page","Mon Nov 10 00:10:51 UTC 2025","broken","Mon Nov 10 00:10:51 UTC 2025","","","",""
+"","1911","open example","Demo","Mon Nov 10 01:13:56 UTC 2025","passed","Mon Nov 10 01:13:58 UTC 2025","","","",""
