@@ -1,4 +1,4 @@
-import Page from './page.js';
+import Page from './base.page.js';
 import { $ } from '@wdio/globals';
 
 class HomePage extends Page {
