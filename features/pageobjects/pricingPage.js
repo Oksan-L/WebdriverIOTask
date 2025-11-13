@@ -6,9 +6,9 @@ class PricingPage extends Page {
     return $('a[href="/"] img[alt="Telnyx Logo"]');
   }
 
-get signUpButton() {
-    return $('a[href="/sign-up"] span[data-content="Sign up"]');
-}
+  get signUpButton() {
+    return $('header a[href="/sign-up"] span=Sign up');
+  }
 
   get setiButton() { return $('a[href="https://seti.telnyx.com"]'); }
   get contactUsButton() { return $('a[href="/contact-us"]'); }
@@ -26,8 +26,19 @@ get signUpButton() {
 
 async clickSignUpButton() {
     await this.acceptCookiesIfPresent();
-    const button = await this.signUpButton.parentElement();
-    await button.waitForDisplayed({ timeout: 15000 });
+    await browser.pause(1000);
+
+    const button = await this.signUpButton;
+
+    await browser.waitUntil(async () => await button.isExisting(), {
+        timeout: 15000,
+        timeoutMsg: 'Sign Up button not found in DOM'
+    });
+
+    if (!(await button.isDisplayed())) {
+        await button.scrollIntoView();
+    }
+
     await button.waitForClickable({ timeout: 5000 });
     await button.click();
 }
@@ -51,7 +62,6 @@ async clickSignUpButton() {
 
     await button.waitForClickable({ timeout: 5000 });
 
-    // Якщо кнопка відкриває нову вкладку
     const newTab = ['seti', 'log in'].includes(buttonName.toLowerCase());
     if (newTab) {
       const originalHandle = await browser.getWindowHandle();
@@ -74,24 +84,33 @@ async clickSignUpButton() {
   }
 
   async returnToPricingPage() {
-    // Якщо ми в новій вкладці → закриваємо і повертаємося
     const handles = await browser.getWindowHandles();
     if (handles.length > 1) {
       await browser.closeWindow();
       await browser.switchToWindow(handles[0]);
     } else {
-      // Якщо в тій же вкладці → просто назад
       await browser.back();
     }
   }
 
-  async acceptCookiesIfPresent() {
-    const cookieButton = await $('#onetrust-accept-btn-handler');
-    if (await cookieButton.isExisting()) {
-      await cookieButton.click();
-      await browser.pause(500);
-    }
-  }
+// async acceptCookiesIfPresent() {
+//     const cookieBtn = await $('#onetrust-accept-btn-handler');
+//     if (await cookieBtn.isExisting()) {
+//         try {
+//             await cookieBtn.waitForDisplayed({ timeout: 10000 });
+//             await browser.pause(300);
+//             if (await cookieBtn.isClickable()) {
+//                 await cookieBtn.click();
+//             } else {
+//                 await browser.execute((el) => el.click(), cookieBtn);
+//             }
+//             await browser.pause(500);
+//         } catch (err) {
+//             console.warn('Cookie banner found but could not be interacted with:', err.message);
+//         }
+//     }
+// }
+
 
   async isSignUpFormVisible() {
     const form = await $('form[action="/sign-up"]');

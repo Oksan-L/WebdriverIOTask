@@ -1,0 +1,53 @@
+{
+  "script": "<script> [152 bytes]",
+  "args": [
+    {
+      "sessionId": "53466a7e8ccc557d953fea99d97f37a3",
+      "elementId": "f.F5B24954D0FE873B4DF28DE9A0AB0506.d.6052C4F4F8AB3FDB3475DAC71F1A97B4.e.107",
+      "element-6066-11e4-a52e-4f735466cecf": "f.F5B24954D0FE873B4DF28DE9A0AB0506.d.6052C4F4F8AB3FDB3475DAC71F1A97B4.e.107",
+      "locator": {
+        "type": "css",
+        "value": "a[href=\"/sign-up\"] span[data-content=\"Sign up\"]"
+      },
+      "selector": "a[href=\"/sign-up\"] span[data-content=\"Sign up\"]",
+      "parent": {
+        "sessionId": "53466a7e8ccc557d953fea99d97f37a3",
+        "capabilities": {
+          "acceptInsecureCerts": false,
+          "browserName": "chrome",
+          "browserVersion": "142.0.7444.136",
+          "chrome": {
+            "chromedriverVersion": "142.0.7444.136 (f9bf0f8bd54c7014a05e116502b265a749a8f4df-refs/branch-heads/7444@{#2372})",
+            "userDataDir": "C:\\Users\\User\\AppData\\Local\\Temp\\scoped_dir3172_994914147"
+          },
+          "fedcm:accounts": true,
+          "goog:chromeOptions": {
+            "debuggerAddress": "localhost:57193"
+          },
+          "goog:processID": 16176,
+          "networkConnectionEnabled": false,
+          "pageLoadStrategy": "normal",
+          "platformName": "windows",
+          "proxy": {},
+          "setWindowRect": true,
+          "strictFileInteractability": false,
+          "timeouts": {
+            "implicit": 0,
+            "pageLoad": 300000,
+            "script": 30000
+          },
+          "unhandledPromptBehavior": "ignore",
+          "webSocketUrl": "ws://localhost:57184/session/53466a7e8ccc557d953fea99d97f37a3",
+          "webauthn:extension:credBlob": true,
+          "webauthn:extension:largeBlob": true,
+          "webauthn:extension:minPinLength": true,
+          "webauthn:extension:prf": true,
+          "webauthn:virtualAuthenticators": true,
+          "wdio:driverPID": 3172
+        }
+      },
+      "isReactElement": false,
+      "isShadowElement": false
+    }
+  ]
+}
