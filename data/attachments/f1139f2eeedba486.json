@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#onetrust-accept-btn-handler\"}\n  (Session info: chrome=142.0.7444.59)",
+  "stacktrace": "#0 0x55efd513eaea <unknown>\n#1 0x55efd4b8acdb <unknown>\n#2 0x55efd4bdd6c4 <unknown>\n#3 0x55efd4bdd901 <unknown>\n#4 0x55efd4c2c8b4 <unknown>\n#5 0x55efd4c29c87 <unknown>\n#6 0x55efd4bcfaca <unknown>\n#7 0x55efd4bd07d1 <unknown>\n#8 0x55efd5105ab9 <unknown>\n#9 0x55efd5108a8c <unknown>\n#10 0x55efd50eed49 <unknown>\n#11 0x55efd5109685 <unknown>\n#12 0x55efd50d66c3 <unknown>\n#13 0x55efd512b7d8 <unknown>\n#14 0x55efd512b9b3 <unknown>\n#15 0x55efd513da83 <unknown>\n#16 0x7fec91c9caa4 <unknown>\n#17 0x7fec91d29c6c <unknown>\n"
+}
