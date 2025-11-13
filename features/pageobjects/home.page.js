@@ -20,9 +20,6 @@ class HomePage extends Page {
     await button.scrollIntoView();
     await button.waitForClickable({ timeout: 5000 });
     await button.click();
-    // await this.callYourAgentButton.scrollIntoView();
-    // await this.callYourAgentButton.waitForClickable();
-    // await this.callYourAgentButton.click();
   }
 
   async isInteractiveToolVisible() {
@@ -39,7 +36,7 @@ class HomePage extends Page {
     const cookieAcceptButton = await $('#onetrust-accept-btn-handler');
     if (await cookieAcceptButton.isExisting()) {
         await cookieAcceptButton.click();
-        await browser.pause(500); // невелика пауза, щоб банер зник
+        await browser.pause(500);
     }
 }
 

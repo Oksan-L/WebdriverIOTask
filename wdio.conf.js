@@ -1,5 +1,8 @@
 export const config = {
-    
+    before: async function () {
+        await browser.setWindowSize(1920, 1080);
+        await browser.deleteAllCookies();
+    },
     baseUrl: 'https://telnyx.com',
     runner: 'local',
     specs: [
