@@ -6,6 +6,7 @@ const require = createRequire(import.meta.url);
 
 const companyLinks = require('../../data/companyLinks.json');
 const legalLinks = require('../../data/legalLinks.json');
+const compareLinks = require('../../data/compareLinks.json');
 
 class FooterPage extends Page {
   get footerSection() {
@@ -142,19 +143,30 @@ async clickFooterLink(section, linkText) {
     }
 
     async verifyLegalRedirect(name) {
-    const expectedUrl = legalLinks[name];
-    const currentUrl = await browser.getUrl();
+        const expectedUrl = legalLinks[name];
+        const currentUrl = await browser.getUrl();
 
-    if (!expectedUrl) {
-        throw new Error(`Expected URL for "${name}" not found in legalLinks.json`);
+        if (!expectedUrl) {
+            throw new Error(`Expected URL for "${name}" not found in legalLinks.json`);
+        }
+
+        if (expectedUrl.startsWith('http')) {
+            expect(currentUrl).toContain(expectedUrl.replace('https://', '').replace('http://', ''));
+        } else {
+            expect(currentUrl).toContain(expectedUrl);
+        }
     }
 
-    if (expectedUrl.startsWith('http')) {
-        expect(currentUrl).toContain(expectedUrl.replace('https://', '').replace('http://', ''));
-    } else {
-        expect(currentUrl).toContain(expectedUrl);
+    async verifyCompareRedirect(name) {
+        const expectedUrl = compareLinks[name];
+        const currentUrl = await browser.getUrl();
+
+        if (expectedUrl.startsWith('http')) {
+            expect(currentUrl).toContain(expectedUrl.replace('https://', ''));
+        } else {
+            expect(currentUrl).toContain(expectedUrl);
+        }
     }
-}
 
     async switchToNewTabIfNeeded() {
         const handles = await browser.getWindowHandles();

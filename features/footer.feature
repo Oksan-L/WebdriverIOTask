@@ -97,3 +97,43 @@ Feature: Footer links
     When I click the "Terms and Conditions of Service" link in the Legal section
     Then I should be redirected to the "Terms and Conditions of Service" page L
     Then I return to the original page
+
+  Scenario: 010 - All links in the Compare section of the footer work correctlyScenario: 010 - All links in the Compare section of the footer work correctly
+    Given I open the Telnyx pricing page
+    When I scroll to the footer
+
+    When I click the "ElevenLabs" link in the Compare section
+    Then I should be redirected to the "ElevenLabs" page CMP
+    Then I return to the original page
+
+    When I click the "Vapi" link in the Compare section
+    Then I should be redirected to the "Vapi" page CMP
+    Then I return to the original page
+
+    When I click the "Twilio" link in the Compare section
+    Then I should be redirected to the "Twilio" page CMP
+    Then I return to the original page
+
+    When I click the "Bandwidth" link in the Compare section
+    Then I should be redirected to the "Bandwidth" page CMP
+    Then I return to the original page
+
+    When I click the "Kore Wireless" link in the Compare section
+    Then I should be redirected to the "Kore Wireless" page CMP
+    Then I return to the original page
+
+    When I click the "Hologram" link in the Compare section
+    Then I should be redirected to the "Hologram" page CMP
+    Then I return to the original page
+
+    When I click the "Vonage" link in the Compare section
+    Then I should be redirected to the "Vonage" page CMP
+    Then I return to the original page
+
+    When I click the "Amazon S3" link in the Compare section
+    Then I should be redirected to the "Amazon S3" page CMP
+    Then I return to the original page
+
+    When I click the "Amazon Connect" link in the Compare section
+    Then I should be redirected to the "Amazon Connect" page CMP
+    Then I return to the original page

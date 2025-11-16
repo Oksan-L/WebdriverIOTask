@@ -2,5 +2,6 @@ node_modules/
 reports/allure-results/
 reports/allure-report/
 allure-report/
+allure-results/
 forIgnore/
 .DS_Store

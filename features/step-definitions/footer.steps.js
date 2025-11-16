@@ -32,6 +32,11 @@ Then(/^I should be redirected to the "([^"]+)" page C$/, async (linkName) => { /
     await FooterPage.verifyCompanyRedirect(linkName);
 });
 
+Then(/^I should be redirected to the "([^"]+)" page CMP$/, async (linkName) => { // Compare
+    await FooterPage.verifyCompareRedirect(linkName);
+});
+
+
 Then(/^I should be redirected to the "([^"]+)" page L$/, async (linkName) => { // Legal
     await FooterPage.verifyLegalRedirect(linkName);
 });
