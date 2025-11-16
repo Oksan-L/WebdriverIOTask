@@ -1,0 +1,2 @@
+invalid selector: WebDriverError: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=142.0.7444.163) when running "elements" with method "POST" and args "{"using":"css selector","value":"div:contains(\"Cloudflare\")"}"

@@ -3,8 +3,9 @@ import { $ } from '@wdio/globals';
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const companyLinks = require('../../data/companyLinks.json');
 
+const companyLinks = require('../../data/companyLinks.json');
+const legalLinks = require('../../data/legalLinks.json');
 
 class FooterPage extends Page {
   get footerSection() {
@@ -115,16 +116,17 @@ class FooterPage extends Page {
 
 // 008
 
-async clickCompanyLink(linkText) {
-    const link = await $(`=${linkText}`);
+async clickFooterLink(section, linkText) {
+    const sectionElement = await $(`p=${section}`);
+    await sectionElement.scrollIntoView();
+
+    const link = await sectionElement.parentElement().$(`=${linkText}`);
 
     await link.waitForExist({ timeout: 5000 });
     await link.scrollIntoView();
     await link.waitForDisplayed({ timeout: 5000 });
 
-    // Інколи Telnyx має плавний скрол →
     await browser.pause(200);
-
     await link.click();
 }
 
@@ -138,6 +140,21 @@ async clickCompanyLink(linkText) {
             expect(currentUrl).toContain(expectedUrl);
         }
     }
+
+    async verifyLegalRedirect(name) {
+    const expectedUrl = legalLinks[name];
+    const currentUrl = await browser.getUrl();
+
+    if (!expectedUrl) {
+        throw new Error(`Expected URL for "${name}" not found in legalLinks.json`);
+    }
+
+    if (expectedUrl.startsWith('http')) {
+        expect(currentUrl).toContain(expectedUrl.replace('https://', '').replace('http://', ''));
+    } else {
+        expect(currentUrl).toContain(expectedUrl);
+    }
+}
 
     async switchToNewTabIfNeeded() {
         const handles = await browser.getWindowHandles();
@@ -153,6 +170,18 @@ async clickCompanyLink(linkText) {
             await browser.switchToWindow(handles[0]);
         }
     }
+
+    async isCaptchaVisible() {
+    const cfChallenge = await $$('iframe[src*="challenge"]');
+    const cfTurnstile = await $$('iframe[src*="turnstile"]');
+    const cfManaged = await $$('div[data-sitekey], iframe[src*="cloudflare"]');
+
+    return (
+        cfChallenge.length > 0 ||
+        cfTurnstile.length > 0 ||
+        cfManaged.length > 0
+    );
+}
 
 }
 
