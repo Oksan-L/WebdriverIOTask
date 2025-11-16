@@ -22,10 +22,14 @@ When(/^I click the "([^"]+)" link in the Company section$/, async (linkName) => 
     await FooterPage.clickCompanyLink(linkName);
 });
 
-Then(/^I should be redirected to the "([^"]+)" page 2$/, async (expectedPath) => {
-    await FooterPage.verifyRedirect(expectedPath.toLowerCase().replace(/ /g, '-')); // наприклад Our Network -> /our-network
+Then(/^I should be redirected to the "([^"]+)" page 2$/, async (linkName) => {
+    await FooterPage.verifyCompanyRedirect(linkName);
 });
 
-Then(/^I return to the original page$/, async function () {
+Then(/^I return to the original page$/, async () => {
     await FooterPage.returnToOriginalTab();
 });
+
+// Then(/^I return to the original page$/, async function () {
+//     await FooterPage.returnToOriginalTab();
+// });

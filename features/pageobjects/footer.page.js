@@ -1,6 +1,11 @@
 import Page from './base.page.js';
 import { $ } from '@wdio/globals';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const companyLinks = require('../../data/companyLinks.json');
+
+
 class FooterPage extends Page {
   get footerSection() {
     return $('footer');
@@ -108,42 +113,46 @@ class FooterPage extends Page {
 }
 
 
+// 008
 
-constructor() {
-        super();
-        this.url = 'https://telnyx.com/pricing'; // оригінальна сторінка
+async clickCompanyLink(linkText) {
+    const link = await $(`=${linkText}`);
+
+    await link.waitForExist({ timeout: 5000 });
+    await link.scrollIntoView();
+    await link.waitForDisplayed({ timeout: 5000 });
+
+    // Інколи Telnyx має плавний скрол →
+    await browser.pause(200);
+
+    await link.click();
+}
+
+    async verifyCompanyRedirect(name) {
+        const expectedUrl = companyLinks[name];
+        const currentUrl = await browser.getUrl();
+
+        if (expectedUrl.startsWith('http')) {
+            expect(currentUrl).toContain(expectedUrl.replace('https://', ''));
+        } else {
+            expect(currentUrl).toContain(expectedUrl);
+        }
     }
 
-    // Гетер для всіх посилань у секції Company
-    get companyLinks() {
-        return $$('footer .company a');
+    async switchToNewTabIfNeeded() {
+        const handles = await browser.getWindowHandles();
+        if (handles.length > 1) {
+            await browser.switchToWindow(handles[1]);
+        }
     }
 
-    // Клік по конкретному лінку за назвою
-    async clickCompanyLink(name) {
-        const link = await this.companyLinks.find(async (el) => (await el.getText()) === name);
-        if (!link) throw new Error(`Link with name "${name}" not found`);
-        
-        await link.scrollIntoView();
-        await link.click();
+    async returnToOriginalTab() {
+        const handles = await browser.getWindowHandles();
+        if (handles.length > 1) {
+            await browser.closeWindow();
+            await browser.switchToWindow(handles[0]);
+        }
     }
-
-    // Перевірка, що відбулося перенаправлення на потрібну сторінку
-    async verifyRedirect2(expectedPath) {
-        await browser.waitUntil(
-            async () => (await browser.getUrl()).includes(expectedPath),
-            {
-                timeout: 5000,
-                timeoutMsg: `Expected URL to include "${expectedPath}"`,
-            }
-        );
-    }
-
-    // Повернення на оригінальну сторінку
-    async returnToOriginalPage() {
-        await browser.url(this.url);
-    }
-
 
 }
 

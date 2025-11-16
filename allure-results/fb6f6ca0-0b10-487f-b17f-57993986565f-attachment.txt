@@ -1,0 +1,2 @@
+element not interactable: WebDriverError: element not interactable: https://telnyx.com/our-network has no size and location
+  (Session info: chrome=142.0.7444.163) when running "actions" with method "POST" and args "{"actions":[{"id":"action5","type":"wheel","parameters":{},"actions":[{"type":"scroll","x":-960,"y":2354,"deltaX":0,"deltaY":0,"duration":0,"origin":{"element-6066-11e4-a52e-4f735466cecf":"f.B4F85A62E118D5F19C15BA20978F19F6.d.801B9ADF3CC556EC417ED10428988880.e.148"}}]}]}"
