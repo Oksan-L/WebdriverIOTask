@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//p[contains(concat(\" \",@class,\" \"), \" c-mkazC \") and normalize-space(text()) = \"Company\"] | .//p[contains(concat(\" \",@class,\" \"), \" c-mkazC \") and not(.//p[contains(concat(\" \",@class,\" \"), \" c-mkazC \") and normalize-space(text()) = \"Company\"]) and normalize-space() = \"Company\"]"
+}
