@@ -1,4 +1,4 @@
-import { $, $$, browser } from '@wdio/globals';
+    import { $, $$, browser } from '@wdio/globals';
 
 class PricingPage {
 
@@ -92,6 +92,30 @@ class PricingPage {
     async scrollToBenefits() {
         await this.benefitsSection.scrollIntoView();
         await browser.pause(300);
+    }
+
+    // 014-016
+
+    getSection(sectionId) {
+        return $(`#${sectionId}`);
+    }
+
+    getSectionHeading(sectionId) {
+        return $(`#${sectionId} h2`);
+    }
+
+    getLinks(sectionId) {
+        return this.getSection(sectionId).$$('a.c-PJLV.c-iNaFFq.mchNoDecorate');
+    }
+
+    getNestedDivs(sectionId) {
+        return this.getSection(sectionId).$$('a .c-dnmyni');
+    }
+
+    async scrollToSection(sectionId) {
+        const section = await this.getSection(sectionId);
+        await section.scrollIntoView();
+        await browser.pause(500);
     }
 }
 

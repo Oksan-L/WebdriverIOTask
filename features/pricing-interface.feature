@@ -33,3 +33,28 @@ Feature: Pricing Page Interface checks
     Then the benefits section should contain exactly one list
     Then the benefits list should have 3 items
     Then each benefit item should contain one heading and one paragraph
+    Then the benefits section should contain correct items
+
+  Scenario: 014 - Validate the “IoT” section structure, content, and styles
+    Given I open the Telnyx pricing page
+    When I scroll to the "iot" section
+    Then the section "iot" should contain correct heading "IoT"
+    And the section "iot" should contain exactly 1 link item
+    And the link items in "iot" should have correct nested div classes "c-dnmyni-cjsPWI-backgroundColor-citron"
+    And the nested divs in "iot" should have background color "rgba(211, 255, 166, 0.95)"
+
+  Scenario: 015 - Validate the “Networking” section structure, content, and styles
+    Given I open the Telnyx pricing page
+    When I scroll to the "networking" section
+    Then the section "networking" should contain correct heading "Networking"
+    And the section "networking" should contain exactly 2 link items
+    And the link items in "networking" should have correct nested div classes "c-dnmyni-gSajfo-backgroundColor-blue"
+    And the nested divs in "networking" should have background color "rgba(52, 52, 239, 0.95)"
+
+  Scenario: 016 - Validate the “Compute” section structure, content, and styles
+    Given I open the Telnyx pricing page
+    When I scroll to the "compute" section
+    Then the section "compute" should contain correct heading "Compute"
+    And the section "compute" should contain exactly 2 link items
+    And the link items in "compute" should have correct nested div classes "c-dnmyni-dwsAeM-backgroundColor-tan"
+    And the nested divs in "compute" should have background color "rgba(230, 227, 211, 0.95)"
