@@ -214,7 +214,8 @@ Then(
       const innerDiv = await link.$('div');
       const bg = await innerDiv.getCSSProperty('background-color');
 
-      await expect(bg.parsed.string).toBe(expectedColor);
+      await expect(bg.value).toBe(expectedColor);
     }
   }
 );
+
