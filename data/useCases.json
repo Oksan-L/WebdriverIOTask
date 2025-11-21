@@ -1,0 +1,19 @@
+{
+  "panels": [
+    {
+      "text": "AI gathers symptoms, asks follow-up questions, and routes patients to the appropriate level of care, whether that’s urgent, virtual or routine."
+    },
+    {
+      "text": "AI Agents manage scheduling, rescheduling and cancellations for immediate responses and free up front desk."
+    },
+    {
+      "text": "AI delivers test results with context, using simple language and links to relevant resources, so patients understand what’s next and when to follow up."
+    },
+    {
+      "text": "Patients can request refills or get medication details instantly, without waiting on hold. AI confirms eligibility, routes to the right queue, or provides status updates in real time."
+    },
+    {
+      "text": "Automated follow-ups help close care gaps, confirm medication adherence, and surface complications early without adding more calls to your staff’s plate."
+    }
+  ]
+}

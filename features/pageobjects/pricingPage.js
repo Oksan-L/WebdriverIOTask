@@ -9,6 +9,9 @@ class PricingPage extends Page {
   get signUpButton() {
     return $('header a[href="/sign-up"] span=Sign up');
   }
+// get signUpButton() {
+//     return $('a.c-bzrwjc[href="/sign-up"]');
+// }
 
   get setiButton() { return $('a[href="https://seti.telnyx.com"]'); }
   get contactUsButton() { return $('a[href="/contact-us"]'); }
@@ -24,23 +27,33 @@ class PricingPage extends Page {
     await this.telnyxLogo.click();
   }
 
+// async clickSignUpButton() {
+//     await this.acceptCookiesIfPresent();
+//     await browser.pause(1000);
+
+//     const button = await this.signUpButton;
+
+//     await browser.waitUntil(async () => await button.isExisting(), {
+//         timeout: 15000,
+//         timeoutMsg: 'Sign Up button not found in DOM'
+//     });
+
+//     if (!(await button.isDisplayed())) {
+//         await button.scrollIntoView();
+//     }
+
+//     await button.waitForClickable({ timeout: 5000 });
+//     await button.click();
+// }
 async clickSignUpButton() {
-    await this.acceptCookiesIfPresent();
-    await browser.pause(1000);
+    console.log(await btn.isClickable());
+    console.log(await btn.isDisplayedInViewport());
 
-    const button = await this.signUpButton;
+    const btn = await this.signUpButton;
+    await btn.waitForDisplayed({ timeout: 10000 });
 
-    await browser.waitUntil(async () => await button.isExisting(), {
-        timeout: 15000,
-        timeoutMsg: 'Sign Up button not found in DOM'
-    });
-
-    if (!(await button.isDisplayed())) {
-        await button.scrollIntoView();
-    }
-
-    await button.waitForClickable({ timeout: 5000 });
-    await button.click();
+    // JS click – обхід перекриття
+    await browser.execute((el) => el.click(), btn);
 }
 
   async clickTopNavButton(buttonName) {
