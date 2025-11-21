@@ -31,8 +31,6 @@ Then('the signup form should be visible', async () => {
     expect(isVisible).toBe(true);
 });
 
-// --- Top navigation buttons (SETI, Contact us, Log in) ---
-
 When(/^I click on the "(.*)" button in the navigation bar$/, async (buttonName) => {
   await PricingPage.clickTopNavButton(buttonName);
 });
