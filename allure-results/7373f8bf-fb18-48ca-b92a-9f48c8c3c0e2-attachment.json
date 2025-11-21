@@ -1,5 +1,0 @@
-{
-  "error": "no such element",
-  "message": "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#onetrust-accept-btn-handler\"}\n  (Session info: chrome=142.0.7444.136)",
-  "stacktrace": "Symbols not available. Dumping unresolved backtrace:\n\t0x7ff78c60a255\n\t0x7ff78c362680\n\t0x7ff78c0f16dd\n\t0x7ff78c14a27e\n\t0x7ff78c14a58c\n\t0x7ff78c19ed77\n\t0x7ff78c19baba\n\t0x7ff78c13b0ed\n\t0x7ff78c13bf63\n\t0x7ff78c635d80\n\t0x7ff78c62feaa\n\t0x7ff78c651025\n\t0x7ff78c37d76e\n\t0x7ff78c384e6f\n\t0x7ff78c36b814\n\t0x7ff78c36b9cf\n\t0x7ff78c351938\n\t0x7ffe44417614\n\t0x7ffe460a26b1\n"
-}

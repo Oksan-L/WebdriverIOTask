@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "div[data-sitekey], iframe[src*=\"cloudflare\"]"
-}

@@ -1,2 +1,0 @@
-invalid selector: WebDriverError: invalid selector: An invalid or illegal selector was specified
-  (Session info: chrome=142.0.7444.136) when running "element" with method "POST" and args "{"using":"css selector","value":"header a[href=\"/sign-up\"] span=Sign up"}"
